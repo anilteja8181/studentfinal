@@ -3,21 +3,34 @@
 @Library('shared-library@main') _ //master or whatever branch
 
 pipeline{
-
-      agent any
-        
-        stages{
-
-              stage('maven build'){
-                  steps{
-                      script{
-		    	                sh '''
-          cd Student
-          mvn clean install
-    '''
-                      	  }
-               	     }  
-                 }	
+    agent any
+    stages{
+        stage("Git")
+        {
+            steps{
+                git 'https://github.com/anilteja8181/studentfinal.git'
+            }
+        } 
+        stage("Maven build")
+        {
+            steps{
+                sh "mvn -f StudentTest/pom.xml clean install compile package"
+            }
+        }
+        stage("Test")
+        {
+            steps{
+                sh "mvn -f StudentTest/pom.xml test"
+            }
+            post{
+                always{
+                    junit 'StudentTest/target/surefire-reports/TEST-*.xml'
+                }
+            }
+        }
+	  
+}
+}
                  
                  stage ('Check logs') {
                     steps {
