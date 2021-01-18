@@ -10,17 +10,17 @@ pipeline{
         stage("Maven build")
         {
             steps{
-                sh "mvn -f studentfinal/pom.xml clean install compile package"
+                sh "mvn -f StudentTest/pom.xml clean install compile package"
             }
         }
         stage("Test")
         {
             steps{
-                sh "mvn -f studentfinal/pom.xml test"
+                sh "mvn -f StudentTest/pom.xml test"
             }
             post{
                 always{
-                    junit 'studentfinal/target/surefire-reports/TEST-*.xml'
+                    junit 'StudentTest/target/surefire-reports/TEST-*.xml'
                 }
             }
         }
