@@ -29,8 +29,8 @@ pipeline{
             }
         }
 	  
-}
-}
+
+
                  
                  stage ('Check logs') {
                     steps {
@@ -39,6 +39,7 @@ pipeline{
                 }
 		
 		
-           }	       	     	         
+           }
 }
-}
+
+
