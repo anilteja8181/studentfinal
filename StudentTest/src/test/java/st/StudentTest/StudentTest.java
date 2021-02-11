@@ -6,20 +6,20 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class StudentTest {
-	Student std=new Student("13000216132", "amartya", "it", "a","fisrt");
+	Student std=new Student("13000216132", "anil", "it", "a","fisrt");
 	@Test
 	void testroll() {
 		Assertions.assertEquals("13000216132", "13000216132", "result");
 	}
 	@Test
 	void testname() {
-		Assertions.assertEquals("amartya", "amartya", "result");
+		Assertions.assertEquals("anil", "anil", "result");
 	}
 	
 	
 	@Test
 	void teststream() {
-		Assertions.assertEquals("it", "it", "result");
+		Assertions.assertEquals("cse", "cse", "result");
 	}
 	@Test
 	void testgrade() {
