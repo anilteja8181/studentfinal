@@ -24,6 +24,11 @@ pipeline{
                 }
             }
         }
+	    stage('ansible-deploy'){
+	      steps{
+	          ansiblePlaybook credentialsId: 'ansible-privateKey', disableHostKeyChecking: true, installation: 'ansible', inventory: 'StudentTest/dev.inv', playbook: 'StudentTest/Test.yml'
+	      }
+	  }
 	  
 }
 }
