@@ -5,30 +5,19 @@
 pipeline{
     agent any
     stages{
-        stage("Git")
-        {
-            steps{
-                git 'https://github.com/anilteja8181/studentfinal.git'
-            }
-        } 
+        
         stage("Maven build")
         {
             steps{
-                sh "mvn -f StudentTest/pom.xml clean install compile package"
+                 script{
+		    	                sh '''
+          cd Student
+          mvn clean install
+    '''
+                      	  }
             }
         }
-        stage("Test")
-        {
-            steps{
-                sh "mvn -f StudentTest/pom.xml test"
-            }
-            post{
-                always{
-                    junit 'StudentTest/target/surefire-reports/TEST-*.xml'
-                }
-            }
-        }
-	  
+        
 
 
                  
